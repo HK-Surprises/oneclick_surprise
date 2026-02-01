@@ -34,7 +34,7 @@ export default function Home() {
           delay: 1,
         }}
         className="fixed bottom-4 right-4 text-sm text-white/40 pointer-events-none z-50">
-        @anujbuilds
+        @oneclick_surprise
       </motion.div>
     </div>
   )

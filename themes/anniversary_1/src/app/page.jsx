@@ -8,7 +8,7 @@ import AnniversaryScreen from "@/components/screens/AnniversaryScreen"
 import PhotoGalleryScreen from "@/components/screens/PhotoGalleryScreen"
 import MessageScreen from "@/components/screens/MessageScreen"
 
-export default function AnniversaryApp({couple_name}) {
+export default function AnniversaryApp(props) {
   const [currentScreen, setCurrentScreen] = useState("loader")
 
   const goToIntro = () => setCurrentScreen("intro")
@@ -16,15 +16,18 @@ export default function AnniversaryApp({couple_name}) {
   const goToGallery = () => setCurrentScreen("gallery")
   const goToMessage = () => setCurrentScreen("message")
 
+  // payload props: couple_name, partner_name, months_together, song, photos, message
+  const { couple_name, partner_name, photos, message, months_together, song } = props
+
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-indigo-950 via-black to-purple-950 overflow-hidden">
 
       <AnimatePresence mode="wait">
         {currentScreen === "loader" && <LoaderScreen key="loader" onComplete={goToIntro} />}
         {currentScreen === "intro" && <IntroScreen key="intro" couple_name={couple_name} onNext={goToAnniversary} />}
-        {currentScreen === "anniversary" && <AnniversaryScreen key="anniversary" onNext={goToGallery} />}
-        {currentScreen === "gallery" && <PhotoGalleryScreen key="gallery" onNext={goToMessage} />}
-        {currentScreen === "message" && <MessageScreen key="message" />}
+        {currentScreen === "anniversary" && <AnniversaryScreen key="anniversary" onNext={goToGallery} partner_name={partner_name} months_together={months_together} song={song} />}
+        {currentScreen === "gallery" && <PhotoGalleryScreen key="gallery" onNext={goToMessage} photos={photos} />}
+        {currentScreen === "message" && <MessageScreen key="message" message={message} />}
       </AnimatePresence>
 
       {/* Watermark */}
@@ -36,7 +39,7 @@ export default function AnniversaryApp({couple_name}) {
           delay: 1,
         }}
         className="fixed bottom-4 right-4 text-[13px] text-white/40 pointer-events-none z-50 font-light">
-        @anujbuilds
+        @oneclick_surprise
       </motion.div>
     </div>
   )

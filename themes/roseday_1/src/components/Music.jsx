@@ -14,7 +14,7 @@ export default function Music({ shouldPlay }) {
 
     return (
         <audio ref={audioRef} preload="none">
-            <source src="/audio/bg.mp3" type="audio/mpeg" />
+            <source src="/songs/Roseday_1/bg.mp3" type="audio/mpeg" />
         </audio>
     )
 }

@@ -67,3 +67,37 @@
 .emoji {
   font-size: 26px;
 }
+
+/* Form styles for birthday form */
+.form-wrapper { max-width: 460px; margin: auto; padding: 24px; }
+.form-group { margin-bottom: 16px; text-align: left; }
+.form-group p { margin: 0 0 8px; font-weight: 600; }
+
+/* Radio buttons styled as pills */
+.radio-group { display: flex; gap: 8px; align-items: center; }
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  transition: all .15s ease;
+  font-size: 14px;
+  position: relative;
+}
+.radio-option .radio-input { position: absolute; opacity: 0; pointer-events: none; }
+.radio-option.active { background: #111; color: #fff; border-color: #111; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+/* Focus for keyboard users */
+.radio-option:focus-within { outline: 2px solid rgba(17,17,17,0.12); }
+
+/* Make options full width on small screens */
+@media (max-width: 480px) {
+  .radio-group { flex-direction: column; width: 100%; }
+  .radio-option { width: 100%; justify-content: center; padding: 12px; }
+  .radio-option + .radio-option { margin-top: 8px; }
+}

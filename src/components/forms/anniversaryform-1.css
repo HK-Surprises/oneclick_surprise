@@ -1,94 +1,184 @@
-/* Wrapper */
+/* ===== Root wrapper ===== */
 .form-wrapper {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 24px;
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 520px;
+  margin: 40px auto;
+  padding: 28px;
+  background: linear-gradient(180deg, #ffffff, #fafafa);
+  border-radius: 22px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Title */
+/* ===== Title ===== */
 .form-wrapper h2 {
   text-align: center;
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 24px;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  letter-spacing: -0.3px;
 }
 
-/* Inputs & Select */
+/* ===== Form groups ===== */
+.form-group {
+  margin-bottom: 22px;
+}
+
+/* ===== Labels (used for radio sections) ===== */
+.form-group p {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* ===== Inputs, Select, Textarea ===== */
 .form-wrapper input,
-.form-wrapper select {
+.form-wrapper select,
+.form-wrapper textarea {
   width: 100%;
   padding: 14px 16px;
   font-size: 15px;
-  border-radius: 12px;
-  border: 1px solid #e4e4e4;
+  border-radius: 14px;
+  border: 1.5px solid #e6e6e6;
+  background: #ffffff;
   outline: none;
-  transition: all 0.2s ease;
-  background: #fafafa;
+  transition: all 0.25s ease;
 }
 
+.form-wrapper textarea {
+  resize: none;
+}
+
+/* Focus state */
 .form-wrapper input:focus,
-.form-wrapper select:focus {
+.form-wrapper select:focus,
+.form-wrapper textarea:focus {
   border-color: #111;
-  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.06);
 }
 
-/* File Input */
+/* ===== File input ===== */
 .form-wrapper input[type="file"] {
   padding: 12px;
-  background: #fff;
+  cursor: pointer;
+  background: #f9f9f9;
+}
+
+/* Helper text */
+.form-group small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #777;
+}
+
+/* ===== Radio group styling ===== */
+.form-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #f4f4f4;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+}
+
+.form-group label:hover {
+  background: #ececec;
+}
+
+.form-group input[type="radio"] {
+  accent-color: #111;
   cursor: pointer;
 }
 
-/* Buttons */
+/* ===== Song preview button ===== */
+.preview-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #f2f2f2;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.preview-btn:hover {
+  background: #e8e8e8;
+  transform: translateY(-1px);
+}
+
+/* ===== Primary button ===== */
 .primary-btn {
   width: 100%;
-  background: #111;
-  color: white;
-  padding: 14px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #111, #000);
+  color: #ffffff;
+  padding: 16px;
   font-size: 16px;
-  border-radius: 14px;
+  font-weight: 600;
+  border-radius: 18px;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .primary-btn:hover {
-  background: #000;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .primary-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-/* Song Preview Button */
-.preview-btn {
-  background: #f5f5f5;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
-}
-
-.preview-btn:hover {
-  background: #eaeaea;
-}
-
-/* Spacing */
-.form-group {
-  margin-bottom: 18px;
-}
-
-/* Mobile optimization */
+/* ===== Mobile optimization ===== */
 @media (max-width: 480px) {
   .form-wrapper {
-    padding: 20px;
-    border-radius: 14px;
+    margin: 20px;
+    padding: 22px;
+    border-radius: 18px;
   }
+
+  .form-wrapper h2 {
+    font-size: 22px;
+  }
+}
+
+/* ===== Pill-style radio controls ===== */
+.radio-group { display: flex; gap: 10px; align-items: center; }
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  transition: all .15s ease;
+  font-size: 14px;
+}
+.radio-option .radio-input { position: absolute; opacity: 0; pointer-events: none; }
+.radio-option.active { background: #111111; color: #fff; border-color: #111; box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+.radio-option:focus-within { outline: 2px solid rgba(17,17,17,0.08); border-color: #111; }
+
+@media (max-width: 480px) {
+  .radio-group { flex-direction: column; width: 100%; }
+  .radio-option { width: 100%; justify-content: center; padding: 12px; }
+  .radio-option + .radio-option { margin-top: 8px; }
 }

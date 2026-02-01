@@ -7,14 +7,31 @@ import RosedayForm_1 from "./forms/RosedayForm_1";
 
 // Theme images (extend these when adding more
 // images for other themes)
-import b1_1 from "./Theme_Image/Birthday_1/1.png";
-import b1_2 from "./Theme_Image/Birthday_1/2.png";
-import b1_3 from "./Theme_Image/Birthday_1/3.png";
-import b1_4 from "./Theme_Image/Birthday_1/4.png";
-import b1_5 from "./Theme_Image/Birthday_1/5.png";
+import b1_1 from "./Theme_Image/Birthday_1/1.jpeg";
+import b1_2 from "./Theme_Image/Birthday_1/2.jpeg";
+import b1_3 from "./Theme_Image/Birthday_1/3.jpeg";
+import b1_4 from "./Theme_Image/Birthday_1/4.jpeg";
+import b1_5 from "./Theme_Image/Birthday_1/5.jpeg";
+import b1_6 from "./Theme_Image/Birthday_1/6.jpeg";
+
+// Anniversary previews
+import a1_1 from "./Theme_Image/Anniversary_1/1.jpeg";
+import a1_2 from "./Theme_Image/Anniversary_1/2.jpeg";
+import a1_3 from "./Theme_Image/Anniversary_1/3.jpeg";
+import a1_4 from "./Theme_Image/Anniversary_1/4.jpeg";
+import a1_5 from "./Theme_Image/Anniversary_1/5.jpeg";
+import a1_6 from "./Theme_Image/Anniversary_1/6.jpeg";
+
+// Roseday previews
+import r1_1 from "./Theme_Image/Roseday_1/1.jpeg";
+import r1_2 from "./Theme_Image/Roseday_1/2.jpeg";
+import r1_3 from "./Theme_Image/Roseday_1/3.jpeg";
+import r1_4 from "./Theme_Image/Roseday_1/4.jpeg";
 
 const THEME_PREVIEWS = {
-  "birthday-1": [b1_1, b1_2, b1_3, b1_4, b1_5],
+  "birthday-1": [b1_1, b1_2, b1_3, b1_4, b1_5, b1_6],
+  "anniversary-1": [a1_1, a1_2, a1_3, a1_4, a1_5, a1_6],
+  "roseday-1": [r1_1, r1_2, r1_3, r1_4],
 };
 
 export default function SetupForm({ qrId }) {
@@ -62,11 +79,11 @@ export default function SetupForm({ qrId }) {
               onClick={() => handleSelectTheme("birthday-1")}
             />
 
-            <ThemeCard
+            {/* <ThemeCard
               label="Birthday - 2"
               emoji="🎂"
               onClick={() => handleSelectTheme("birthday-2")}
-            />
+            /> */}
 
             <ThemeCard
               label="Anniversary"
@@ -91,7 +108,11 @@ export default function SetupForm({ qrId }) {
       {theme && !previewed && (
         <div className="card previewCard">
           <h3>Preview Theme</h3>
-
+          <div className="previewActions">
+            <button className="secondaryBtn" onClick={resetTheme}>
+              ← Change Theme
+            </button>
+          </div>
           <div className="previewArea">
             {THEME_PREVIEWS[theme] ? (
               <>
@@ -120,9 +141,6 @@ export default function SetupForm({ qrId }) {
           <div className="previewActions">
             <button className="primary-btn" onClick={proceedToForm}>
               Use this theme
-            </button>
-            <button className="secondaryBtn" onClick={resetTheme}>
-              ← Change Theme
             </button>
           </div>
         </div>

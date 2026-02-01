@@ -142,7 +142,7 @@ export default function LyricsScreen() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
                     >
-                        <img src="/gifs/3.gif" className="w-60" alt="flower" />
+                        <img src="/gifs/Roseday_1/3.gif" className="w-60" alt="flower" />
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 50, scale: 0.8 }}

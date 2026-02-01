@@ -8,13 +8,15 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import ScreenContainer from '../ScreenContainer';
 
-export default function PhotoGalleryScreen({ onNext }) {
-    const photos = [
-        "/images/1.jpg",
-        "/images/2.jpg",
-        "/images/3.jpg",
-        "/images/4.jpg",
+export default function PhotoGalleryScreen({ onNext, photos: propPhotos }) {
+    const defaultPhotos = [
+        "/images/Anniversary_1/1.jpg",
+        "/images/Anniversary_1/2.jpg",
+        "/images/Anniversary_1/3.jpg",
+        "/images/Anniversary_1/4.jpg",
     ]
+
+    const photos = propPhotos && propPhotos.length ? propPhotos : defaultPhotos
 
     const [details, setDetails] = React.useState(null)
 
@@ -70,17 +72,12 @@ export default function PhotoGalleryScreen({ onNext }) {
                         <div ref={sliderRef} className="zoom-out keen-slider cursor-grab active:cursor-grabbing">
                             {photos.map((photo, index) => (
                                 <div key={index} className="keen-slider__slide zoom-out__slide">
-                                    <Image
+                                    <img
                                         src={photo}
-                                        fill
-                                        sizes="400px"
                                         alt={`Memory ${index + 1}`}
-                                        className="object-cover rounded-2xl w-full"
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.5 }}
+                                        className="object-cover rounded-2xl w-full h-full"
                                         loading="lazy"
-                                        style={scaleStyle(index)}
+                                        style={{ ...scaleStyle(index), width: '100%', height: '100%' }}
                                     />
                                 </div>
                             ))}

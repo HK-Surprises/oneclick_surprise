@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import ScreenContainer from "../ScreenContainer"
 
-export default function AnniversaryScreen({ onNext }) {
+export default function AnniversaryScreen({ onNext, partner_name, months_together, song }) {
     const [displayedDays, setDisplayedDays] = useState(0)
 
     // Set your special date here (YYYY-MM-DD)
@@ -30,7 +30,7 @@ export default function AnniversaryScreen({ onNext }) {
                 >
                     <div className="w-36 h-36 md:w-40 md:h-40 mx-auto bg-pink-500/10 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-pink-400/30 overflow-hidden">
                         <img
-                            src="/gifs/anniversary.gif"
+                            src="/gifs/Anniversary_1/anniversary.gif"
                             alt="img"
                             className="w-28 md:w-32 object-cover rounded-full"
                         />
@@ -43,11 +43,11 @@ export default function AnniversaryScreen({ onNext }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.8 }}
                 >
-                    Happy Anniversary{" "}
+                    Happy Anniversary <br></br>
                     <motion.span
                         className="text-purple-400"
                     >
-                        Cutiepiee
+                        {partner_name}
                     </motion.span>
                 </motion.h1>
 
@@ -70,11 +70,11 @@ export default function AnniversaryScreen({ onNext }) {
                         <motion.div
                             className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight"
                         >
-                            {displayedDays}
+                            {months_together}
                         </motion.div>
                     </motion.div>
 
-                    <p className="text-xl md:text-2xl text-pink-200 mt-6 text-pretty">days and counting...</p>
+                    <p className="text-xl md:text-2xl text-pink-200 mt-6 text-pretty">months and counting...</p>
                 </motion.div>
 
                 <motion.button

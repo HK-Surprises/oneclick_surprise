@@ -4,10 +4,10 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import ScreenContainer from "../ScreenContainer"
 
-export default function MessageScreen() {
+export default function MessageScreen({ message }) {
     const [showOverlay, setShowOverlay] = useState(false)
 
-    const romanticMessage = `My Dearest Cutiepiee,
+    const defaultRomanticMessage = `My Dearest Cutiepiee,
 
 Every day with you feels like a beautiful dream that I never want to wake up from. You've brought so much joy, laughter, and warmth into my life that I can't imagine a world without you in it.
 
@@ -21,6 +21,9 @@ Happy Anniversary, my beautiful soul. Here's to many more years of love, laughte
 
 With all my love and devotion,
 Your Forever Person 💕`
+
+    // prefer incoming message prop, fall back to default
+    const romanticMessage = message && String(message).trim() ? message : defaultRomanticMessage
 
     const handleCardClick = () => {
         setShowOverlay(true)

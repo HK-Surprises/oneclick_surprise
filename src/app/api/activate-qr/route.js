@@ -12,8 +12,9 @@ export async function POST(req) {
   try {
     const formData = await req.formData();
 
-    const qrId = formData.get("qrId");
-    const themeId = formData.get("theme_id");
+    // accept either camelCase (`qrId`) or snake_case (`qr_id`) for forwards/backwards compatibility
+    const qrId = formData.get("qrId") || formData.get("qr_id");
+    const themeId = formData.get("theme_id") || formData.get("themeId");
     const payloadRaw = formData.get("payload"); // 👈 JSON string
     const photos = formData.getAll("photos");
 
@@ -25,6 +26,9 @@ export async function POST(req) {
     }
 
     const payload = JSON.parse(payloadRaw);
+
+    // debug info for incoming activation requests
+    console.debug("activate-qr payload:", { qrId, themeId, keys: Object.keys(payload) });
 
     /* ───────────────────── QR SAFETY CHECK ───────────────────── */
     const qrCheck = await db.query(
@@ -65,6 +69,8 @@ export async function POST(req) {
     payload.photos = photoUrls;
 
     /* ───────────────────── SAVE QR DATA ───────────────────── */
+    const payloadJson = JSON.stringify(payload);
+
     await db.query(
       `
       INSERT INTO qr_data (qr_id, theme_id, payload)
@@ -74,7 +80,7 @@ export async function POST(req) {
         theme_id = EXCLUDED.theme_id,
         payload = EXCLUDED.payload
       `,
-      [qrId, themeId, payload]
+      [qrId, themeId, payloadJson]
     );
 
     /* ───────────────────── MARK QR USED ───────────────────── */

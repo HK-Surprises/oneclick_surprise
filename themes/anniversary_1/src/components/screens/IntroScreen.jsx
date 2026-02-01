@@ -30,7 +30,7 @@ export default function IntroScreen({ onNext,couple_name }) {
                 >
                     <div className="w-36 h-36 md:w-40 md:h-40 mx-auto bg-purple-500/10 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-pink-400/30">
                         <img
-                            src="/gifs/intro.gif"
+                            src="/gifs/Anniversary_1/intro.gif"
                             alt="Cute romantic illustration"
                             className="w-28 md:w-32 object-cover"
                         />
