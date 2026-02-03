@@ -5,12 +5,14 @@ import SetupForm from "@/components/SetupForm";
 export default async function QRPage({ params }) {
     const { qr_id } = await params;
     console.log("DB connected");
+    console.log("QR ID:", qr_id);
     // 1️⃣ check QR exists
     const masterRes = await db.query(
       "SELECT is_used FROM qr_master WHERE qr_id = $1",
       [qr_id]
-    );
-
+    );  
+    console.log("QR master check:", masterRes.rows);
+    
     if (masterRes.rows.length === 0) {
       return (
         <div style={{ textAlign: "center", padding: 40 }}>

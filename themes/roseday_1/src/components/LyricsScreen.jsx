@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Heart, Sparkles, Star } from "lucide-react"
 import { useState, useEffect } from "react"
 
-export default function LyricsScreen() {
+export default function LyricsScreen({name}) {
     const lyrics = [
         "Tu haseen tera naam haseen ae",
         "Tere ishq da jaam haseen ae",
@@ -149,7 +149,7 @@ export default function LyricsScreen() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ delay: 1, duration: 1, ease: "easeInOut" }}
                         className="text-3xl md:text-4xl font-semibold px-4 text-center">
-                        For My Haseen Girl❤️
+                        For My {name} ❤️
                     </motion.h2>
                 </motion.div>
             )}

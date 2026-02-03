@@ -7,20 +7,23 @@ import Screen1 from "@/components/Screen1"
 import Screen2 from "@/components/Screen2"
 import { useState } from "react"
 
-export default function Home() {
+export default function Home(props) {
   const [currentScreen, setCurrentScreen] = useState(1)
   const [musicStarted, setMusicStarted] = useState(false)
+
+  // payload props: name
+  const { name } = props
 
   return (
     <div className="min-h-screen bg-black bg-gradient-to-tr from-purple-950/80 via-black to-pink-950/70">
 
       <AnimatePresence mode="wait">
-        {currentScreen === 1 && <Screen1 key="screen1" onNext={() => setCurrentScreen(2)} />}
-        {currentScreen === 2 && <Screen2 key="screen2" onNext={() => {
+        {currentScreen === 1 && <Screen1 key="screen1" name={name} onNext={() => setCurrentScreen(2)} />}
+        {currentScreen === 2 && <Screen2 key="screen2" name = {name} onNext={() => {
           setCurrentScreen(3)
           setMusicStarted(true)
         }} />}
-        {currentScreen === 3 && <LyricsScreen key="screen3" />}
+        {currentScreen === 3 && <LyricsScreen key="screen3" name={name} />}
       </AnimatePresence>
 
       {musicStarted && <Music shouldPlay={musicStarted} />}
